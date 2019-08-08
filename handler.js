@@ -8,7 +8,8 @@ let  {data , status, isAxiosError: error} = await getPage(event)
 let ratingObj = {}
   if(!error){
     
-    ratingObj = parsePage(data)
+    ratingObj = await parsePage(data)
+    saveData(ratingObj, event)
     
   }else{
     callback(error, data)
