@@ -8,8 +8,14 @@ let  {data , status, isAxiosError: error} = await getPage(event)
 let ratingObj = {}
   if(!error){
     ratingObj = await parsePage(data)
-    saveData(ratingObj, event)
+    await saveData(ratingObj, event)
+    callback(null, {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: `Scraped ${event}`
+      })
+    })
    }else{
-    callback(error, data)
+    callback(new Error(`Error scraping ${event}: ${JSON.stringify(error)}`))
   }
 };
