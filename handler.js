@@ -4,12 +4,16 @@ const {getPage, parsePage, saveData} = require('./utils')
 
 module.exports.scrape = async(event , context, callback) => {
 // fetch yelp page
-let  {data , status, isAxiosError} = await getPage(event)
-console.log(data)
-console.log(status)
+let  {data , status, isAxiosError: error} = await getPage(event)
+let ratingObj = {}
+  if(!error){
+    
+    ratingObj = parsePage(data)
+    
+  }else{
+    callback(error, data)
+  }
 
-//parse page
 
-// save ratings data to db
 
 };
