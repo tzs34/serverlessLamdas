@@ -7,14 +7,9 @@ module.exports.scrape = async(event , context, callback) => {
 let  {data , status, isAxiosError: error} = await getPage(event)
 let ratingObj = {}
   if(!error){
-    
     ratingObj = await parsePage(data)
     saveData(ratingObj, event)
-    
-  }else{
+   }else{
     callback(error, data)
   }
-
-
-
 };
