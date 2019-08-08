@@ -9,6 +9,7 @@ module.exports = async (businessName) => {
     try {
         return await getData(url)
         } catch(error) {
+            console.error(`Error getting data: ${JSON.stringify(error)}`);
          return error
        }
 }
