@@ -67,9 +67,14 @@ functions:
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
     events:
-     - http:
-         path: message/{name}
-         method: get
+      - schedule: rate(1 minute)
+
+    # see https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html
+    # for details on the schedule rate 
+
+    #  - http:
+    #      path: message/{name}
+    #      method: get
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)

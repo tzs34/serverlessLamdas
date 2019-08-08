@@ -1,20 +1,9 @@
 'use strict';
 
-module.exports.hello = async event => {
+module.exports.hello = (event , context, callback) => {
+  const now = new date()
+  const message =  `the time is ${now}`
 
-  const reply = `${event.pathParameters.name} Success`
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: JSON.stringify(reply),
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+  callback(null, message)
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
